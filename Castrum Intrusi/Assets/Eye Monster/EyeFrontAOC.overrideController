@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EyeFrontAOC
+  m_Controller: {fileID: 6005950722386952657, guid: b55591c52fcbb6147af06701da646760, type: 3}
+  m_Clips:
+  - m_OriginalClip: {fileID: 6720303635017113406, guid: b55591c52fcbb6147af06701da646760, type: 3}
+    m_OverrideClip: {fileID: 6720303635017113406, guid: b55591c52fcbb6147af06701da646760, type: 3}
+  - m_OriginalClip: {fileID: 4348485665485846014, guid: b55591c52fcbb6147af06701da646760, type: 3}
+    m_OverrideClip: {fileID: 4348485665485846014, guid: b55591c52fcbb6147af06701da646760, type: 3}
+  - m_OriginalClip: {fileID: -1304387373167265313, guid: b55591c52fcbb6147af06701da646760, type: 3}
+    m_OverrideClip: {fileID: -1304387373167265313, guid: b55591c52fcbb6147af06701da646760, type: 3}
+  - m_OriginalClip: {fileID: -3100369314251171874, guid: b55591c52fcbb6147af06701da646760, type: 3}
+    m_OverrideClip: {fileID: -3100369314251171874, guid: b55591c52fcbb6147af06701da646760, type: 3}

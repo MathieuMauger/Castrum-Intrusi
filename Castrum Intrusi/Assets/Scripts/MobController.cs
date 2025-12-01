@@ -4,9 +4,11 @@ public class MobController : MonoBehaviour
 {
     public Animator animator;
 
-    public AnimatorOverrideController frontAOC;
-    public AnimatorOverrideController backAOC;
-    public AnimatorOverrideController sideAOC;
+    public bool playerDetected;
+
+    public AnimatorOverrideController eyeFront;
+    public AnimatorOverrideController eyeBack;
+    public AnimatorOverrideController eyeSide;
 
     private Vector2 lastMoveDir;
 
@@ -19,7 +21,7 @@ public class MobController : MonoBehaviour
         if (Mathf.Abs(lastMoveDir.x) > Mathf.Abs(lastMoveDir.y))
         {
             // Mouvement horizontal
-            animator.runtimeAnimatorController = sideAOC;
+            animator.runtimeAnimatorController = eyeSide;
 
             // Flip sprite si on va à gauche
             if (lastMoveDir.x < 0)
@@ -31,9 +33,9 @@ public class MobController : MonoBehaviour
         {
             // Mouvement vertical
             if (lastMoveDir.y > 0)
-                animator.runtimeAnimatorController = backAOC; // vers le haut
+                animator.runtimeAnimatorController = eyeBack; // vers le haut
             else
-                animator.runtimeAnimatorController = frontAOC; // vers le bas
+                animator.runtimeAnimatorController = eyeFront; // vers le bas
         }
     }
 }
