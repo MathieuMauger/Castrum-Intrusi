@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EyeBackAOC
+  m_Controller: {fileID: 7414660023187650056, guid: 3cc04ce6caec2fa48af502ca71300b4b, type: 3}
+  m_Clips:
+  - m_OriginalClip: {fileID: 6720303635017113406, guid: 3cc04ce6caec2fa48af502ca71300b4b, type: 3}
+    m_OverrideClip: {fileID: 6720303635017113406, guid: 3cc04ce6caec2fa48af502ca71300b4b, type: 3}
+  - m_OriginalClip: {fileID: 4348485665485846014, guid: 3cc04ce6caec2fa48af502ca71300b4b, type: 3}
+    m_OverrideClip: {fileID: 4348485665485846014, guid: 3cc04ce6caec2fa48af502ca71300b4b, type: 3}
+  - m_OriginalClip: {fileID: -1304387373167265313, guid: 3cc04ce6caec2fa48af502ca71300b4b, type: 3}
+    m_OverrideClip: {fileID: -1304387373167265313, guid: 3cc04ce6caec2fa48af502ca71300b4b, type: 3}
+  - m_OriginalClip: {fileID: -3100369314251171874, guid: 3cc04ce6caec2fa48af502ca71300b4b, type: 3}
+    m_OverrideClip: {fileID: -3100369314251171874, guid: 3cc04ce6caec2fa48af502ca71300b4b, type: 3}
