@@ -1686,6 +1686,10 @@ PrefabInstance:
       value: actualMob
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: b55591c52fcbb6147af06701da646760, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: b55591c52fcbb6147af06701da646760, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -1825,10 +1829,10 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
@@ -1854,7 +1858,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1152
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1862,6 +1866,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!61 &1272525608
+BoxCollider2D:
 --- !u!114 &1272525608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1870,6 +1876,44 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272525601}
   m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.0050000027, y: 0.4}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.53125, y: -2}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.16, y: 0.16000003}
+  m_EdgeRadius: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f4b1ffddf87b324ea7ab315056a653e, type: 3}
   m_Name: 
@@ -1932,9 +1976,9 @@ GameObject:
   - component: {fileID: 1636613947}
   - component: {fileID: 1636613946}
   - component: {fileID: 1636613948}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4587,6 +4631,10 @@ PrefabInstance:
       value: actualPlayer
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: 1172ca86b4c34b945af4bf4a59775757, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 1172ca86b4c34b945af4bf4a59775757, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -4666,6 +4714,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 1172ca86b4c34b945af4bf4a59775757, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2134041409}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 1172ca86b4c34b945af4bf4a59775757, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2134041412}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 1172ca86b4c34b945af4bf4a59775757, type: 3}
 --- !u!1 &2134041400 stripped
 GameObject:
@@ -4775,6 +4826,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3750d4813a422fc4da080998f9901b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &2134041412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134041400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf4afbfab2349b4da088432ac9df310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  projectilePrefab: {fileID: 7215690436909511176, guid: 33059b5b13e10e247a386cdb74ff8a49, type: 3}
+  fireRate: 0.3
+  projectileSpeed: 10
   health: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
