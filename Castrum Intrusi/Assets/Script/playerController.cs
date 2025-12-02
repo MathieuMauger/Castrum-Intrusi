@@ -8,8 +8,6 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f; // vitesse max
     private Rigidbody2D rb;
 
-    public Vector2 moveDirection {  get; private set; }
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,9 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        moveDirection = KeyboardMovement();
-        rb.linearVelocity = moveDirection * moveSpeed;
+        Vector2 move = KeyboardMovement();
+        rb.linearVelocity = move * moveSpeed;
         
     }
 
