@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class MobController : MonoBehaviour
@@ -6,16 +7,20 @@ public class MobController : MonoBehaviour
     [Header("References")]
     public Animator animator;
     public Transform player;
+    public GameObject playerBody;
+    private int health;
 
     [Header("Settings")]
     public float speed = 8f;
     public float attackDistance = 0.8f;
     public float detectionRange = 10f;
+    public float attackCooldown = 5f;
 
     Rigidbody2D rb;
     Vector2 moveDir;
 
-    // Hash des paramètres (optionnel mais propre)
+    bool canAttack = true;
+
     int hashSpeed = Animator.StringToHash("Speed");
     int hashX = Animator.StringToHash("X");
     int hashY = Animator.StringToHash("Y");
@@ -42,19 +47,33 @@ public class MobController : MonoBehaviour
         {
             if (distance > attackDistance)
             {
-                
                 MoveTowardPlayer();
             }
             else
             {
-
-                StartAttack();
+                if (canAttack)
+                    StartAttack();
             }
         }
         else
         {
             SafeSetFloat(hashSpeed, 0f);
         }
+    }
+
+    async void StartAttack()
+    {
+        canAttack = false;
+
+        health = playerBody.GetComponent<playerStats>().health -= 50;
+        print("Player health: " + health);
+
+        SafeSetFloat(hashSpeed, 0f);
+        SafeSetTrigger(hashAttack);
+
+        await Awaitable.WaitForSecondsAsync(attackCooldown);
+
+        canAttack = true;
     }
 
     public void TakeDamage()
@@ -73,26 +92,16 @@ public class MobController : MonoBehaviour
 
     void MoveTowardPlayer()
     {
-
-        print("Déplacement vers le joueur");
         moveDir = (player.position - transform.position).normalized;
-
-        // Animation de marche
         SafeSetFloat(hashSpeed, 1f);
 
-        // Déplacement avec Rigidbody2D (physique propre)
         Vector2 newPos = Vector2.MoveTowards(rb.position, (Vector2)player.position, speed * Time.deltaTime);
         rb.MovePosition(newPos);
 
         UpdateDirectionAnimation(moveDir);
     }
 
-    void StartAttack()
-    {
-        print("Distance d'attaque");
-        SafeSetFloat(hashSpeed, 0f);
-        SafeSetTrigger(hashAttack);
-    }
+
 
     void UpdateDirectionAnimation(Vector2 dir)
     {
@@ -106,7 +115,6 @@ public class MobController : MonoBehaviour
             transform.localScale = s;
         }
     }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
