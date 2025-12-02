@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eye Front
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: b55591c52fcbb6147af06701da646760, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: b55591c52fcbb6147af06701da646760, type: 3}
       propertyPath: m_LocalScale.x
       value: 14
@@ -145,11 +149,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: b55591c52fcbb6147af06701da646760, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: b55591c52fcbb6147af06701da646760, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.56
+      value: -3.68
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: b55591c52fcbb6147af06701da646760, type: 3}
       propertyPath: m_LocalPosition.z
@@ -238,8 +242,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.005000002, y: 0.39999998}
-  m_Radius: 0.080000006
+  m_Offset: {x: -0.005000004, y: 0.38828757}
+  m_Radius: 0.06828594
 --- !u!114 &1282925454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobController
   animator: {fileID: 1282925448}
+  playerDetected: 0
   eyeFront: {fileID: 22100000, guid: 8d0d87be8df95ff43b5f09eb94409ed5, type: 2}
   eyeBack: {fileID: 22100000, guid: 7c9b480dc92abad4f994969f6321fd3b, type: 2}
   eyeSide: {fileID: 22100000, guid: 2714d40fb8fbd4f46b965a712a278e6d, type: 2}

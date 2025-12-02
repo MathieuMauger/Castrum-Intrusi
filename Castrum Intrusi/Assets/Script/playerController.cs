@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
+
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f; // vitesse max
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 move = KeyboardMovement();
         rb.linearVelocity = move * moveSpeed;
+        
     }
 
     private Vector2 KeyboardMovement()
@@ -32,5 +34,18 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.aKey.isPressed) move += Vector2.left;
 
         return move.normalized;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            CircleCollider2D enemyCircle = collision.GetComponent<CircleCollider2D>();
+
+            if (enemyCircle != null)
+            {
+                Debug.Log("Trigger");
+            }
+        }
     }
 }
