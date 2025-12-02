@@ -14,9 +14,13 @@ public class playerStats : MonoBehaviour
 
         if (health <= 0)
         {
+            
+            Destroy(gameObject);
             print("Dead");
             SceneManager.LoadScene("deathScreenScene");
         }
         
     }
+
+
 }

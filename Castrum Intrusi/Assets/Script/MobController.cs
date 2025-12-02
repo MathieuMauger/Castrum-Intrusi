@@ -65,7 +65,7 @@ public class MobController : MonoBehaviour
     {
         canAttack = false;
 
-        health = playerBody.GetComponent<playerStats>().health -= 50;
+        health = playerBody.GetComponent<playerStats>().health -= 10;
         print("Player health: " + health);
 
         SafeSetFloat(hashSpeed, 0f);

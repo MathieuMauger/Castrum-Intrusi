@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class MobStats : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public int mobHealth = 100;
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         
+    }
+    public void TakeDamage()
+    {
+        mobHealth -= 30;
+
+        if (mobHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
