@@ -33,6 +33,16 @@ public class MobController : MonoBehaviour
             animator = GetComponentInChildren<Animator>();
     }
 
+    void Start()
+    {
+    GameObject p = GameObject.FindGameObjectWithTag("Player");
+    if (p != null)
+    {
+        player = p.transform;
+        playerBody = p;
+    }
+    }
+
     void Update()
     {
         if (player == null)

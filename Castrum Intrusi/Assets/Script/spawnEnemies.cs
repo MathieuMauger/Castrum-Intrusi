@@ -1,35 +1,65 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 public class EnemiesSpawner : MonoBehaviour
 {
+    public Tilemap floorTilemap;
     public GameObject[] enemyPrefabs;
-    public int enemiesToSpawn = 8;
+    public GameObject[] intrusiPrefabs;
 
-    private Tilemap floorTilemap;
+    private List<Vector3> spawnPositions = new List<Vector3>();
+
+    public int enemiesToSpawn;
+    public int intrusiToSpawn;
 
     void Start()
     {
-        enemiesToSpawn = Random.Range(4, 10);
-        floorTilemap = GetComponent<Tilemap>();
+        enemiesToSpawn = Random.Range(3, 6);
+        intrusiToSpawn = Random.Range(1, 3);
+
+        CacheFloorPositions();
         SpawnEnemies();
+    }
+
+    void CacheFloorPositions()
+    {
+        spawnPositions.Clear();
+
+        foreach (var pos in floorTilemap.cellBounds.allPositionsWithin)
+        {
+            if (floorTilemap.HasTile(pos))
+            {
+                spawnPositions.Add(floorTilemap.GetCellCenterWorld(pos));
+            }
+        }
+
+        Debug.Log("Nombre de positions valides trouvées : " + spawnPositions.Count);
     }
 
     void SpawnEnemies()
     {
-        BoundsInt bounds = floorTilemap.cellBounds; // get tilemap bounds
+        int total = enemiesToSpawn + intrusiToSpawn;
 
-        for (int i = 0; i < enemiesToSpawn; i++)
+        for (int i = 0; i < total; i++)
         {
-            // generate random position within tilemap bounds
-            float randomX = Random.Range(bounds.xMin, bounds.xMax);
-            float randomY = Random.Range(bounds.yMin, bounds.yMax);
+            if (spawnPositions.Count == 0)
+            {
+                Debug.LogWarning("Aucune position de sol trouvée pour spawn !");
+                return;
+            }
 
-            Vector3 spawnPos = floorTilemap.layoutGrid.CellToWorld(new Vector3Int((int)randomX, (int)randomY, 0));
+            int randomIndex = Random.Range(0, spawnPositions.Count);
+            Vector3 spawnPos = spawnPositions[randomIndex];
 
-            // Pick a random enemy prefab among the available ones
-            int randomEnemy = Random.Range(0, enemyPrefabs.Length);
-            Instantiate(enemyPrefabs[randomEnemy], spawnPos, Quaternion.identity);
+            if (i < enemiesToSpawn)
+            {
+                Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(intrusiPrefabs[Random.Range(0, intrusiPrefabs.Length)], spawnPos, Quaternion.identity);
+            }
         }
     }
 }
