@@ -4,13 +4,13 @@
 public class MobController : MonoBehaviour
 {
     [Header("References")]
-    public Animator animator;       // si vide on essayera GetComponentInChildren
-    public Transform player;        // assigné via trigger ou inspector
+    public Animator animator;
+    public Transform player;
 
     [Header("Settings")]
-    public float speed = 4f;
-    public float attackDistance = 1.8f;
-    public float detectionRange = 5f;
+    public float speed = 8f;
+    public float attackDistance = 0.8f;
+    public float detectionRange = 10f;
 
     Rigidbody2D rb;
     Vector2 moveDir;
@@ -42,10 +42,12 @@ public class MobController : MonoBehaviour
         {
             if (distance > attackDistance)
             {
+                
                 MoveTowardPlayer();
             }
             else
             {
+
                 StartAttack();
             }
         }
@@ -55,8 +57,24 @@ public class MobController : MonoBehaviour
         }
     }
 
+    public void TakeDamage()
+    {
+        if (animator != null)
+            animator.SetTrigger("Hit");
+    }
+
+    public void Die()
+    {
+        if (animator != null)
+            animator.SetTrigger("Death");
+        rb.linearVelocity = Vector2.zero;
+        this.enabled = false;
+    }
+
     void MoveTowardPlayer()
     {
+
+        print("Déplacement vers le joueur");
         moveDir = (player.position - transform.position).normalized;
 
         // Animation de marche
@@ -71,6 +89,7 @@ public class MobController : MonoBehaviour
 
     void StartAttack()
     {
+        print("Distance d'attaque");
         SafeSetFloat(hashSpeed, 0f);
         SafeSetTrigger(hashAttack);
     }
@@ -82,9 +101,12 @@ public class MobController : MonoBehaviour
 
         if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
         {
-            transform.localScale = new Vector3(dir.x < 0 ? -1 : 1, 1, 1);
+            Vector3 s = transform.localScale;
+            s.x = dir.x < 0 ? -Mathf.Abs(s.x) : Mathf.Abs(s.x);
+            transform.localScale = s;
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
