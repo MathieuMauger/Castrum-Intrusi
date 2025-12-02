@@ -1798,9 +1798,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MobController
   animator: {fileID: 1272525602}
   player: {fileID: 2134041406}
+  playerBody: {fileID: 2134041400}
   speed: 8
   attackDistance: 0.8
   detectionRange: 10
+  attackCooldown: 5
 --- !u!58 &1272525604
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1866,6 +1868,8 @@ Rigidbody2D:
   m_Constraints: 0
 --- !u!61 &1272525608
 BoxCollider2D:
+--- !u!114 &1272525608
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1910,6 +1914,10 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.16, y: 0.16000003}
   m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4b1ffddf87b324ea7ab315056a653e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1440923412
 GameObject:
   m_ObjectHideFlags: 0
@@ -4833,6 +4841,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7215690436909511176, guid: 33059b5b13e10e247a386cdb74ff8a49, type: 3}
   fireRate: 0.3
   projectileSpeed: 10
+  health: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

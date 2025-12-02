@@ -1,16 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerStats : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public int health = 100;
+    void Awake()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
+
+        if (health <= 0)
+        {
+            print("Dead");
+            SceneManager.LoadScene("deathScreenScene");
+        }
         
     }
 }
