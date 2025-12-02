@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
     {
         Debug.Log("Projectile touched: " + other.name);
 
-        if (other.CompareTag("Enemy") || other.CompareTag("Obstacle"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             Destroy(gameObject);
         }
