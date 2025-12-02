@@ -1866,7 +1866,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!61 &1272525608
+--- !u!61 &1272525609
 BoxCollider2D:
 --- !u!114 &1272525608
 MonoBehaviour:
