@@ -12,14 +12,20 @@ public class MobController : MonoBehaviour
 
     [Header("Settings")]
     public float speed = 8f;
-    public float attackDistance = 0.8f;
-    public float detectionRange = 10f;
+    //public float detectionRange = 10f;
     public float attackCooldown = 5f;
+
+    [Header("Colliders")]
+    public CircleCollider2D detectionCollider;
+    public CircleCollider2D attackCollider;
 
     Rigidbody2D rb;
     Vector2 moveDir;
 
     bool canAttack = true;
+    bool playerDetected = false;
+    bool playerAttacked = false;
+
 
     int hashSpeed = Animator.StringToHash("Speed");
     int hashX = Animator.StringToHash("X");
@@ -31,16 +37,17 @@ public class MobController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (animator == null)
             animator = GetComponentInChildren<Animator>();
+
     }
 
     void Start()
     {
-    GameObject p = GameObject.FindGameObjectWithTag("Player");
-    if (p != null)
-    {
-        player = p.transform;
-        playerBody = p;
-    }
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            this.player = player.transform;
+            playerBody = player;
+        }
     }
 
     void Update()
@@ -53,9 +60,12 @@ public class MobController : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.position);
 
+        float attackRange = attackCollider.radius;
+        float detectionRange = detectionCollider.radius;
+
         if (distance <= detectionRange)
         {
-            if (distance > attackDistance)
+            if (distance > attackRange)
             {
                 MoveTowardPlayer();
             }
@@ -128,15 +138,26 @@ public class MobController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-            player = collision.transform;
+        if (!collision.CompareTag("Player")) return;
+
+        if (collision == detectionCollider)
+            playerDetected = true;
+
+        if (collision == attackCollider)
+            playerAttacked = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && collision.transform == player)
-            player = null;
+        if (!collision.CompareTag("Player")) return;
+
+        if (collision == detectionCollider)
+            playerDetected = false;
+
+        if (collision == attackCollider)
+            playerAttacked = false;
     }
+
 
     bool HasParameter(int hash)
     {

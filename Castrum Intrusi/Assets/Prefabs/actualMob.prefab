@@ -93,6 +93,9 @@ PrefabInstance:
       addedObject: {fileID: 1332515946518581743}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: b55591c52fcbb6147af06701da646760, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 4979564307958685948}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: b55591c52fcbb6147af06701da646760, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 8942145214803412422}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: b55591c52fcbb6147af06701da646760, type: 3}
       insertIndex: -1
@@ -145,6 +148,42 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.0043022805, y: 0.4047803}
   m_Radius: 0.6
+--- !u!58 &4979564307958685948
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103224543908496584}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.005000002, y: 0.39999998}
+  m_Radius: 0.25
 --- !u!114 &8942145214803412422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,9 +200,9 @@ MonoBehaviour:
   player: {fileID: 6604018662373588377, guid: 1679b31f48e21bf4bbd4ace82c1b4452, type: 3}
   playerBody: {fileID: 6218298405959259644, guid: 1679b31f48e21bf4bbd4ace82c1b4452, type: 3}
   speed: 8
-  attackDistance: 0.8
-  detectionRange: 10
   attackCooldown: 5
+  detectionCollider: {fileID: 1332515946518581743}
+  attackCollider: {fileID: 4979564307958685948}
 --- !u!50 &6930087897046334522
 Rigidbody2D:
   serializedVersion: 5
