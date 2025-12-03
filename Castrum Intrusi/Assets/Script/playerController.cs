@@ -34,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        Debug.Log($"X = {moveDirection.x}, Y = {moveDirection.y}");
+    }
+
     private void UpdateAnimation(Vector2 dir)
     {
         animator.SetFloat("X", dir.x);
