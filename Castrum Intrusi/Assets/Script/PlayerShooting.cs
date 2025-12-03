@@ -7,21 +7,19 @@ public class PlayerShooting : MonoBehaviour
     public float projectileSpeed = 10f;
 
     private float fireTimer;
-    private PlayerMovement movement;
-
-    void Start()
-    {
-        movement = GetComponent<PlayerMovement>();
-    }
 
     void Update()
     {
         fireTimer -= Time.deltaTime;
 
-        // Si le joueur bouge -> tirer automatiquement
-        if (movement.moveDirection != Vector2.zero && fireTimer <= 0f)
+        if (Input.GetKeyDown(KeyCode.Space) && fireTimer <= 0f)
         {
-            FireProjectile(movement.moveDirection);
+           
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            Vector2 direction = (mousePos - transform.position).normalized;
+
+            FireProjectile(direction);
             fireTimer = fireRate;
         }
     }
@@ -34,5 +32,4 @@ public class PlayerShooting : MonoBehaviour
         Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
         rb.linearVelocity = direction * projectileSpeed;
     }
-
 }
