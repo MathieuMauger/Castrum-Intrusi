@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: actualIntrusis
       objectReference: {fileID: 0}
+    - target: {fileID: 4103224543908496584, guid: ccd9b3f08d4b5b84cbcb991ca77bbea3, type: 3}
+      propertyPath: m_TagString
+      value: Intrusis
+      objectReference: {fileID: 0}
     - target: {fileID: 7646143036540863300, guid: ccd9b3f08d4b5b84cbcb991ca77bbea3, type: 3}
       propertyPath: m_Color.b
       value: 0.11747949

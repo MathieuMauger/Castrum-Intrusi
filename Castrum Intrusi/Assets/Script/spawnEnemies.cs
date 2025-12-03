@@ -22,6 +22,18 @@ public class EnemiesSpawner : MonoBehaviour
         SpawnEnemies();
     }
 
+    void Update()
+{
+    GameObject[] intrusis = GameObject.FindGameObjectsWithTag("Intrusis");
+    Debug.Log(intrusis.Length);
+
+    if (intrusis.Length == 0)
+    {
+        Debug.Log("You won");
+    }
+}
+
+
     void CacheFloorPositions()
     {
         spawnPositions.Clear();
