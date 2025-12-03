@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
 
 
         // 🔴 Dégâts aux Intrusi si on touche un Intrusi
-        if (other.CompareTag("Intrusi"))
+        if (other.CompareTag("Intrusis"))
         {
             Debug.Log("💥 Intrusi hit!");
             MobStats mob = other.GetComponent<MobStats>();
