@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
-
 
 public class EnemiesSpawner : MonoBehaviour
 {
@@ -30,14 +28,8 @@ public class EnemiesSpawner : MonoBehaviour
     Debug.Log(intrusis.Length);
 
     if (intrusis.Length == 0)
-    {   
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (GameObject enemy in enemies)
-            {
-                Destroy(enemy);
-            }
-        SpawnEnemies();
+    {
+        Debug.Log("You won");
     }
 }
 
