@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 [RequireComponent(typeof(Rigidbody2D))]
 
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f; // vitesse max
     private Rigidbody2D rb;
+    public Animator animator;
+
 
     public Vector2 moveDirection {  get; private set; }
 
@@ -17,15 +20,32 @@ public class PlayerMovement : MonoBehaviour
         rb.linearDamping = 10f;               // freine automatiquement
         rb.angularDamping = 0f;
         rb.freezeRotation = true;    // empêche la rotation
+        animator = GetComponent<Animator>();
     }
+
 
     private void FixedUpdate()
     {
 
         moveDirection = KeyboardMovement();
         rb.linearVelocity = moveDirection * moveSpeed;
-        
+
+        UpdateAnimation(moveDirection);
+
     }
+
+    private void Update()
+    {
+        Debug.Log($"X = {moveDirection.x}, Y = {moveDirection.y}");
+    }
+
+    private void UpdateAnimation(Vector2 dir)
+    {
+        animator.SetFloat("X", dir.x);
+        animator.SetFloat("Y", dir.y);
+        animator.SetFloat("Speed", dir.magnitude);
+    }
+
 
     private Vector2 KeyboardMovement()
     {
