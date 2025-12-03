@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: b55591c52fcbb6147af06701da646760, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1160356261127867848, guid: b55591c52fcbb6147af06701da646760, type: 3}
       propertyPath: m_Controller
@@ -46,11 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: b55591c52fcbb6147af06701da646760, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.48
+      value: 6.23
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: b55591c52fcbb6147af06701da646760, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.68
+      value: -3.97
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: b55591c52fcbb6147af06701da646760, type: 3}
       propertyPath: m_LocalPosition.z
@@ -143,7 +143,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0043022805, y: 0.4047803}
+  m_Offset: {x: 0, y: 0.14}
   m_Radius: 0.6
 --- !u!114 &8942145214803412422
 MonoBehaviour:
@@ -161,9 +161,9 @@ MonoBehaviour:
   player: {fileID: 6604018662373588377, guid: 1679b31f48e21bf4bbd4ace82c1b4452, type: 3}
   playerBody: {fileID: 6218298405959259644, guid: 1679b31f48e21bf4bbd4ace82c1b4452, type: 3}
   speed: 8
-  attackDistance: 0.8
-  detectionRange: 10
   attackCooldown: 5
+  detectionCollider: {fileID: 1332515946518581743}
+  attackCollider: {fileID: 0}
 --- !u!50 &6930087897046334522
 Rigidbody2D:
   serializedVersion: 5
@@ -238,10 +238,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0050000027, y: 0.4}
+  m_Offset: {x: -0.0025, y: 0.145}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.53125, y: -2}
+    pivot: {x: 0.53125, y: -0.43749994}
     oldSize: {x: 0.16, y: 0.16}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5

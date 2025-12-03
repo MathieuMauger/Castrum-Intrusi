@@ -16,6 +16,8 @@ public class MobController : MonoBehaviour
     public float detectionRange = 10f;
     public float attackCooldown = 5f;
 
+    private float timeSinceLastAttack = 0f;
+
     Rigidbody2D rb;
     Vector2 moveDir;
 
@@ -45,6 +47,15 @@ public class MobController : MonoBehaviour
 
     void Update()
     {
+        if(timeSinceLastAttack >= attackCooldown)
+        {
+            canAttack = true;
+        }
+        else
+        {
+            timeSinceLastAttack += Time.deltaTime;
+        }
+        
         if (player == null)
         {
             SafeSetFloat(hashSpeed, 0f);
@@ -55,12 +66,11 @@ public class MobController : MonoBehaviour
 
         if (distance <= detectionRange)
         {
-            if (distance > attackDistance)
+            MoveTowardPlayer();
+            Debug.Log("In detection range");
+            if (distance <= attackDistance)
             {
-                MoveTowardPlayer();
-            }
-            else
-            {
+                Debug.Log("In Attack range");
                 if (canAttack)
                     StartAttack();
             }
@@ -71,19 +81,16 @@ public class MobController : MonoBehaviour
         }
     }
 
-    async void StartAttack()
+    void StartAttack()
     {
         canAttack = false;
+
+        timeSinceLastAttack = 0;
 
         health = playerBody.GetComponent<playerStats>().health -= 2;
         print("Player health: " + health);
 
-        SafeSetFloat(hashSpeed, 0f);
-        SafeSetTrigger(hashAttack);
 
-        await Awaitable.WaitForSecondsAsync(attackCooldown);
-
-        canAttack = true;
     }
 
     public void TakeDamage()

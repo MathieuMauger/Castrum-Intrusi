@@ -3,24 +3,51 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float lifetime = 3f;
-    public GameObject mobBody;
+    public int damage = 2;
 
+    private playerStats playerStats;
+    
     private void Start()
     {
         Destroy(gameObject, lifetime);
+
+        // On récupère le player automatiquement
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+            playerStats = player.GetComponent<playerStats>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        MobStats mob = other.GetComponent<MobStats>();
-        if (mob != null)
+        // 🟡 Dégâts au PLAYER si on touche un Enemy
+        if (other.CompareTag("Enemy"))
         {
-            mob.TakeDamage();
+            Debug.Log("🔥 Player hit by an enemy projectile!");
+            if (playerStats != null)
+                playerStats.health -= damage;
+
+            Destroy(gameObject);
+            return;
         }
 
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+
+        // 🔴 Dégâts aux Intrusi si on touche un Intrusi
+        if (other.CompareTag("Intrusi"))
         {
-            Debug.Log("Projectile touched: " + other.name);
+            Debug.Log("💥 Intrusi hit!");
+            MobStats mob = other.GetComponent<MobStats>();
+            if (mob != null)
+                mob.TakeDamage();
+
+            Destroy(gameObject);
+            return;
+        }
+
+
+        // ❌ Si on touche un obstacle, on détruit juste le projectile
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            Debug.Log("🧱 Projectile destroyed by obstacle");
             Destroy(gameObject);
         }
     }
