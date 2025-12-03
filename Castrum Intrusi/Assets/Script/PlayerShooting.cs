@@ -14,7 +14,7 @@ public class PlayerShooting : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && fireTimer <= 0f)
         {
-            Debug.Log("Sarrko");
+           
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             Vector2 direction = (mousePos - transform.position).normalized;

@@ -3344,10 +3344,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1160356261127867848, guid: 1172ca86b4c34b945af4bf4a59775757, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: cdbe0581fe9e4c74d881daa93082d99c, type: 2}
     - target: {fileID: 3626916397498700004, guid: 1172ca86b4c34b945af4bf4a59775757, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3446,7 +3442,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 5
-  animator: {fileID: 2134041404}
 --- !u!50 &2134041402
 Rigidbody2D:
   serializedVersion: 5
@@ -3520,11 +3515,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.13, y: 0.11637227}
   m_EdgeRadius: 0
---- !u!95 &2134041404 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1160356261127867848, guid: 1172ca86b4c34b945af4bf4a59775757, type: 3}
-  m_PrefabInstance: {fileID: 2134041399}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2134041409
 MonoBehaviour:
   m_ObjectHideFlags: 0
