@@ -11,10 +11,14 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 moveDirection {  get; private set; }
 
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         rb.gravityScale = 0f;        // pas de gravité
         rb.linearDamping = 10f;               // freine automatiquement
         rb.angularDamping = 0f;
@@ -23,10 +27,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        animator.SetFloat("MoveX", moveDirection.x);
-        animator.SetFloat("MoveY", moveDirection.y);
-        animator.SetBool("IsMoving", moveDirection != Vector2.zero);
+        float speed = moveDirection.magnitude;
+
+        animator.SetFloat("Horizontal", moveDirection.x);
+        animator.SetFloat("Vertical", moveDirection.y);
+        animator.SetFloat("speed", speed);
     }
+
 
     private void FixedUpdate()
     {
