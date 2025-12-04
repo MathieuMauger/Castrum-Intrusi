@@ -20,6 +20,27 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/deathScreenScene.unity
     guid: ea909c63c2d0b5246874fe180655c10d
+  - enabled: 1
+    path: Assets/Scenes/Map 1.unity
+    guid: 6ec49a4eb47d1884da0dfc73f015dc8a
+  - enabled: 1
+    path: Assets/Scenes/Map 2.unity
+    guid: 996ed14d4f1b5484ab12cc0041af9b32
+  - enabled: 1
+    path: Assets/Scenes/Map 3.unity
+    guid: 1a7922ca357c6c44ab09eb643685954f
+  - enabled: 1
+    path: Assets/Scenes/Map 4.unity
+    guid: 976788f608854624ba6565a33629ad65
+  - enabled: 1
+    path: Assets/Scenes/Map 5.unity
+    guid: 697d2f25d530bb144959824069aaeaea
+  - enabled: 1
+    path: Assets/Scenes/Map 6.unity
+    guid: 6555491ef777cff4186107c342c18362
+  - enabled: 1
+    path: Assets/Scenes/Map 7.unity
+    guid: e23b370a504e5574d9d61681aa2cd97a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
