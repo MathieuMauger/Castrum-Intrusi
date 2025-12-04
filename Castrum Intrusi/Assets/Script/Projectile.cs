@@ -22,10 +22,12 @@ public class Projectile : MonoBehaviour
         // 🟡 Dégâts au PLAYER si on touche un Enemy
         if (other.CompareTag("Enemy"))
         {
+            MobStats mob = other.GetComponent<MobStats>();
+            if (mob != null)
+                mob.TakeDamage();
             Debug.Log("🔥 Player hit by an enemy projectile!");
             if (playerStats != null)
                 playerStats.health -= damage;
-
             Destroy(gameObject);
             return;
         }
