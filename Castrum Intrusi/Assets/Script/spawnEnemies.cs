@@ -105,6 +105,15 @@ public class EnemiesSpawner : MonoBehaviour
 
     void SpawnPlayer()
     {
+
+        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            print(player + "player");
+            if (!player.GetComponent<playerStats>()) { 
+                Destroy(player);
+            }
+        }
+
         if (spawnPositions.Count == 0)
         {
             Debug.LogWarning("Aucune position de sol trouvée pour spawn le player !");

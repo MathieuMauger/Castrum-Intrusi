@@ -37,17 +37,40 @@ public class MobController : MonoBehaviour
 
     void Start()
     {
-    GameObject p = GameObject.FindGameObjectWithTag("Player");
-    if (p != null)
-    {
-        player = p.transform;
-        playerBody = p;
+        FindPlayer();
+
+        //if (player == null) { 
+        //    GameObject p = GameObject.FindGameObjectWithTag("Player");
+        //    if (p != null)
+        //    {
+        //        player = p.transform;
+        //        playerBody = p;
+        //    }
+        //    return;
+        //}
     }
+
+    void FindPlayer()
+    {
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+
+        if (p != null)
+        {
+            player = p.transform;
+            playerBody = p;
+        }
     }
 
     void Update()
     {
-        if(timeSinceLastAttack >= attackCooldown)
+
+        if (player == null)
+        {
+            FindPlayer();
+            return;
+        }
+
+        if (timeSinceLastAttack >= attackCooldown)
         {
             canAttack = true;
         }
@@ -87,7 +110,7 @@ public class MobController : MonoBehaviour
 
         timeSinceLastAttack = 0;
 
-        health = playerBody.GetComponent<playerStats>().health -= 2;
+        health = playerStats.Instance.health -= 2;
         print("Player health: " + health);
 
 
