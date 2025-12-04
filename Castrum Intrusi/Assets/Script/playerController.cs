@@ -7,16 +7,25 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f; // vitesse max
     private Rigidbody2D rb;
+    public Animator animator;
 
     public Vector2 moveDirection {  get; private set; }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         rb.gravityScale = 0f;        // pas de gravité
         rb.linearDamping = 10f;               // freine automatiquement
         rb.angularDamping = 0f;
         rb.freezeRotation = true;    // empêche la rotation
+    }
+
+    void Update()
+    {
+        animator.SetFloat("MoveX", moveDirection.x);
+        animator.SetFloat("MoveY", moveDirection.y);
+        animator.SetBool("IsMoving", moveDirection != Vector2.zero);
     }
 
     private void FixedUpdate()
