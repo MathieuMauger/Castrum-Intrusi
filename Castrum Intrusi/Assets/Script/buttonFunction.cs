@@ -12,6 +12,7 @@ public class startButton : MonoBehaviour
             playerStats.Instance.ResetStats();
         }
 
+
         EnemiesSpawner.LoadRandomScene();
     }
 
