@@ -7,6 +7,11 @@ public class startButton : MonoBehaviour
 
     public void launchGame()
     {
+        if (playerStats.Instance != null)
+        {
+            playerStats.Instance.ResetStats();
+        }
+
         EnemiesSpawner.LoadRandomScene();
     }
 

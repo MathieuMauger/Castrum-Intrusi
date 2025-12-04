@@ -39,7 +39,8 @@ public class EnemiesSpawner : MonoBehaviour
             {
                 Destroy(enemy);
             }
-            LoadRandomScene();
+            playerStats.Instance.NextTurn();
+            
         }
     }
 
