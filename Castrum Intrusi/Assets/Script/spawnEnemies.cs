@@ -9,6 +9,7 @@ public class EnemiesSpawner : MonoBehaviour
     public Tilemap floorTilemap;
     public GameObject[] enemyPrefabs;
     public GameObject[] intrusiPrefabs;
+    public GameObject playerPrefab;
 
     private List<Vector3> spawnPositions = new List<Vector3>();
 
@@ -22,24 +23,37 @@ public class EnemiesSpawner : MonoBehaviour
 
         CacheFloorPositions();
         SpawnEnemies();
+        SpawnPlayer();
     }
 
     void Update()
-{
-    GameObject[] intrusis = GameObject.FindGameObjectsWithTag("Intrusis");
-    Debug.Log(intrusis.Length);
+    {
+        GameObject[] intrusis = GameObject.FindGameObjectsWithTag("Intrusis");
+        Debug.Log(intrusis.Length);
 
-    if (intrusis.Length == 0)
-    {   
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (intrusis.Length == 0)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        foreach (GameObject enemy in enemies)
+            foreach (GameObject enemy in enemies)
             {
                 Destroy(enemy);
             }
-        SpawnEnemies();
+            LoadRandomScene();
+        }
     }
-}
+
+    public static void LoadRandomScene()
+    {
+        string[] scenes = {
+            "Map 1", "Map 2", "Map 3",
+            "Map 4", "Map 5", "Map 6", "Map 7"
+        };
+
+        SceneManager.LoadScene(
+            scenes[Random.Range(0, scenes.Length)]
+        );
+    }
 
 
     void CacheFloorPositions()
@@ -81,5 +95,19 @@ public class EnemiesSpawner : MonoBehaviour
                 Instantiate(intrusiPrefabs[Random.Range(0, intrusiPrefabs.Length)], spawnPos, Quaternion.identity);
             }
         }
+    }
+
+    void SpawnPlayer()
+    {
+        if (spawnPositions.Count == 0)
+        {
+            Debug.LogWarning("Aucune position de sol trouvée pour spawn le player !");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, spawnPositions.Count);
+        Vector3 spawnPos = spawnPositions[randomIndex];
+
+        Instantiate(playerPrefab, spawnPos, Quaternion.identity);
     }
 }
