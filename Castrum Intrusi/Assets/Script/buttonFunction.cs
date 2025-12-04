@@ -21,4 +21,9 @@ public class startButton : MonoBehaviour
         Debug.Log("Leave the game");
         Application.Quit();
     }
+
+    public void backToHomeScreen()
+    {
+        SceneManager.LoadScene("homeScreenScene");
+    }
 }
