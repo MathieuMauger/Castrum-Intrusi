@@ -4,9 +4,20 @@ using UnityEngine.SceneManagement;
 public class playerStats : MonoBehaviour
 {
     public int health = 100;
+
+    public static playerStats Instance;
+
     void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
