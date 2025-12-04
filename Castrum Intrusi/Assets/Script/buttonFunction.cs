@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,7 +7,7 @@ public class startButton : MonoBehaviour
 
     public void launchGame()
     {
-        SceneManager.LoadScene("Dungeon");
+        EnemiesSpawner.LoadRandomScene();
     }
 
     public void leaveGame()

@@ -43,7 +43,7 @@ public class EnemiesSpawner : MonoBehaviour
         }
     }
 
-    public void LoadRandomScene()
+    public static void LoadRandomScene()
     {
         string[] scenes = {
             "Map 1", "Map 2", "Map 3",
