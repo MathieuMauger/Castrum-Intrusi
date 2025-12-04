@@ -10,6 +10,7 @@ public class EnemiesSpawner : MonoBehaviour
     public GameObject[] enemyPrefabs;
     public GameObject[] intrusiPrefabs;
     public GameObject playerPrefab;
+    public GameObject turnsUIPrefab;
 
     private List<Vector3> spawnPositions = new List<Vector3>();
 
@@ -18,6 +19,9 @@ public class EnemiesSpawner : MonoBehaviour
 
     void Start()
     {
+        Instantiate(turnsUIPrefab);
+        DontDestroyOnLoad(turnsUIPrefab);
+
         enemiesToSpawn = Random.Range(3, 6);
         intrusiToSpawn = Random.Range(1, 3);
 
@@ -39,7 +43,8 @@ public class EnemiesSpawner : MonoBehaviour
             {
                 Destroy(enemy);
             }
-            LoadRandomScene();
+            playerStats.Instance.NextTurn();
+            
         }
     }
 
@@ -49,6 +54,7 @@ public class EnemiesSpawner : MonoBehaviour
             "Map 1", "Map 2", "Map 3",
             "Map 4", "Map 5", "Map 6", "Map 7"
         };
+
 
         SceneManager.LoadScene(
             scenes[Random.Range(0, scenes.Length)]

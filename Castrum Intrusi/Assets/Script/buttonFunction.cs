@@ -7,6 +7,12 @@ public class startButton : MonoBehaviour
 
     public void launchGame()
     {
+        if (playerStats.Instance != null)
+        {
+            playerStats.Instance.ResetStats();
+        }
+
+
         EnemiesSpawner.LoadRandomScene();
     }
 
@@ -14,5 +20,10 @@ public class startButton : MonoBehaviour
     {
         Debug.Log("Leave the game");
         Application.Quit();
+    }
+
+    public void backToHomeScreen()
+    {
+        SceneManager.LoadScene("homeScreenScene");
     }
 }
