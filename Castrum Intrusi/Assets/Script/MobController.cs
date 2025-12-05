@@ -61,9 +61,8 @@ public class MobController : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-
         if (player == null)
         {
             FindPlayer();
@@ -71,38 +70,24 @@ public class MobController : MonoBehaviour
         }
 
         if (timeSinceLastAttack >= attackCooldown)
-        {
             canAttack = true;
-        }
         else
-        {
-            timeSinceLastAttack += Time.deltaTime;
-        }
-        
-        if (player == null)
-        {
-            SafeSetFloat(hashSpeed, 0f);
-            return;
-        }
+            timeSinceLastAttack += Time.fixedDeltaTime;
 
         float distance = Vector2.Distance(transform.position, player.position);
 
         if (distance <= detectionRange)
         {
             MoveTowardPlayer();
-            Debug.Log("In detection range");
-            if (distance <= attackDistance)
-            {
-                Debug.Log("In Attack range");
-                if (canAttack)
-                    StartAttack();
-            }
+            if (distance <= attackDistance && canAttack)
+                StartAttack();
         }
         else
         {
             SafeSetFloat(hashSpeed, 0f);
         }
     }
+
 
     void StartAttack()
     {
@@ -135,11 +120,12 @@ public class MobController : MonoBehaviour
         moveDir = (player.position - transform.position).normalized;
         SafeSetFloat(hashSpeed, 1f);
 
-        Vector2 newPos = Vector2.MoveTowards(rb.position, (Vector2)player.position, speed * Time.deltaTime);
+        Vector2 newPos = Vector2.MoveTowards(rb.position, (Vector2)player.position, speed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
 
         UpdateDirectionAnimation(moveDir);
     }
+
 
 
 
