@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
         // On récupère le player automatiquement
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
-            playerStats = player.GetComponent<playerStats>();
+            playerStats = playerStats.Instance;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
                 mob.TakeDamage();
             Debug.Log("🔥 Player hit by an enemy projectile!");
             if (playerStats != null)
-                playerStats.health -= damage;
+                playerStats.health -= 2;
             Destroy(gameObject);
             return;
         }

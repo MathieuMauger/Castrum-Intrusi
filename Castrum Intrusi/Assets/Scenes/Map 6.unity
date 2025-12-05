@@ -365,13 +365,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   floorTilemap: {fileID: 1799272361}
+  wallTilemap: {fileID: 1850481343}
   enemyPrefabs:
   - {fileID: 4103224543908496584, guid: ccd9b3f08d4b5b84cbcb991ca77bbea3, type: 3}
   intrusiPrefabs:
   - {fileID: 5298300760679714789, guid: 09186bf8dbced944885280e39ac7841f, type: 3}
   playerPrefab: {fileID: 6218298405959259644, guid: 1679b31f48e21bf4bbd4ace82c1b4452,
     type: 3}
-  turnsUIPrefab: {fileID: 5471085747893446427, guid: d6c27ce387b77fd4fa2bc2bdc5683014,
+  turnsUIPrefab: {fileID: 5749181812909975435, guid: d6c27ce387b77fd4fa2bc2bdc5683014,
     type: 3}
   enemiesToSpawn: 5
   intrusiToSpawn: 0
