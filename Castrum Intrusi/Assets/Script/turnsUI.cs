@@ -4,9 +4,9 @@ using TMPro;
 
 public class turnsUI : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI TurnsText;
+    [SerializeField] TextMeshProUGUI turnText;
 
-    //public GameObject playerPrefab;
+
 
     void Awake()
     {
@@ -16,6 +16,6 @@ public class turnsUI : MonoBehaviour
 
     void Update()
     {
-        TurnsText.text = "Turn " + playerStats.Instance.turnCount.ToString();
+        turnText.text = "Turn " + (playerStats.Instance.turnCount + 1).ToString();
     }
 }

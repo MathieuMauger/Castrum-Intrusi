@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class EnemiesSpawner : MonoBehaviour
 {
     public Tilemap floorTilemap;
+    public Tilemap wallTilemap;
     public GameObject[] enemyPrefabs;
     public GameObject[] intrusiPrefabs;
     public GameObject playerPrefab;
@@ -63,19 +64,30 @@ public class EnemiesSpawner : MonoBehaviour
 
 
     void CacheFloorPositions()
+{
+    spawnPositions.Clear();
+
+    foreach (var pos in floorTilemap.cellBounds.allPositionsWithin)
     {
-        spawnPositions.Clear();
+        if (!floorTilemap.HasTile(pos))
+            continue;
 
-        foreach (var pos in floorTilemap.cellBounds.allPositionsWithin)
-        {
-            if (floorTilemap.HasTile(pos))
-            {
-                spawnPositions.Add(floorTilemap.GetCellCenterWorld(pos));
-            }
-        }
+        
+        bool nearWall =
+            wallTilemap.HasTile(pos + new Vector3Int(1, 0, 0)) || 
+            wallTilemap.HasTile(pos + new Vector3Int(-1, 0, 0)) || 
+            wallTilemap.HasTile(pos + new Vector3Int(0, 1, 0)) || 
+            wallTilemap.HasTile(pos + new Vector3Int(0, -1, 0));  
 
-        Debug.Log("Nombre de positions valides trouvées : " + spawnPositions.Count);
+        if (nearWall)
+            continue; 
+
+        spawnPositions.Add(floorTilemap.GetCellCenterWorld(pos));
     }
+
+    Debug.Log("Nombre de positions valides trouvées : " + spawnPositions.Count);
+}
+
 
     void SpawnEnemies()
     {
