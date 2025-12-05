@@ -354,6 +354,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2149030216539362170, guid: d6c27ce387b77fd4fa2bc2bdc5683014,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 245
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149030216539362170, guid: d6c27ce387b77fd4fa2bc2bdc5683014,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 164.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3652815638035742569, guid: d6c27ce387b77fd4fa2bc2bdc5683014,
         type: 3}
       propertyPath: m_Pivot.x
@@ -454,10 +464,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4114815141718440921, guid: d6c27ce387b77fd4fa2bc2bdc5683014,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -252
+      objectReference: {fileID: 0}
+    - target: {fileID: 4114815141718440921, guid: d6c27ce387b77fd4fa2bc2bdc5683014,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 167.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738869205868985725, guid: d6c27ce387b77fd4fa2bc2bdc5683014,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5749181812909975435, guid: d6c27ce387b77fd4fa2bc2bdc5683014,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021612776557439713, guid: d6c27ce387b77fd4fa2bc2bdc5683014,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8154131845516696902, guid: d6c27ce387b77fd4fa2bc2bdc5683014,
         type: 3}
